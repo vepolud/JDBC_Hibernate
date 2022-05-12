@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/PP_1_1_3-4_JDBC_Hibernate-master.iml" filepath="$PROJECT_DIR$/.idea/PP_1_1_3-4_JDBC_Hibernate-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PP_1_1_3-4_JDBC_Hibernate-master/TaskJDBC.iml" filepath="$PROJECT_DIR$/PP_1_1_3-4_JDBC_Hibernate-master/TaskJDBC.iml" />
+    </modules>
+  </component>
+</project>
