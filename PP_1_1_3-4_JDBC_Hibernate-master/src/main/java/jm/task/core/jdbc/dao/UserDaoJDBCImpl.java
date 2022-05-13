@@ -30,8 +30,14 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()){
             statement.execute("DROP TABLE IF EXISTS `users`.`users`;");
+
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        try {
+            connection.close();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -64,13 +70,12 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
-        try (Statement statement = connection.createStatement()){
-            ResultSet rs = statement.executeQuery("SELECT * FROM users");
+        try (Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT * FROM users")){
             while (rs.next()){
                 User user = new User(rs.getString(2), rs.getString(3), rs.getByte(4));
                 user.setId(rs.getLong(1));
                 userList.add(user);
-
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
