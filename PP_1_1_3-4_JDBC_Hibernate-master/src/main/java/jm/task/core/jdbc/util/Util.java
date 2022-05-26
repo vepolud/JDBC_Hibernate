@@ -17,6 +17,16 @@ public class Util {
     private final static String USER = "root";
     private final static String PASSWORD = "root";
     private static SessionFactory sessionFactory;
+    private static Util INSTANCE;
+    private Util(){
+    }
+
+    public Util getInstance(){
+        if (INSTANCE == null) {
+            INSTANCE = new Util();
+        }
+        return INSTANCE;
+    }
 
     public static Connection getConnection() {
         Connection connection = null;
@@ -43,7 +53,7 @@ public class Util {
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+                settings.put(Environment.HBM2DDL_AUTO, "create");
 
                 configuration.setProperties(settings);
 
